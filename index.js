@@ -1,5 +1,16 @@
 import makeWASocket, { DisconnectReason } from '@adiwajshing/baileys'
 import { Boom } from '@hapi/boom'
+import makeWASocket, { BufferJSON, useSingleFileAuthState } from '@adiwajshing/baileys'
+import * as fs from 'fs'
+
+// utility function to help save the auth state in a single file
+// it's utility ends at demos -- as re-writing a large file over and over again is very inefficient
+const { state, saveState } = useSingleFileAuthState('./session.json')
+// will use the given state to connect
+// so if valid credentials are available -- it'll connect without QR
+const conn = makeSocket({ auth: state }) 
+// this will be called as soon as the credentials are updated
+sock.ev.on ('creds.update', saveState)
 
 async function connectToWhatsApp () {
     const sock = makeWASocket({
