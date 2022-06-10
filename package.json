@@ -19,17 +19,7 @@
     "multistream": "^4.1.0",
     "node-fetch": "^2.6.1",
     "node-tesseract-ocr": "^2.2.1",
-    "os": "^0.1.1",
-    "parse-ms": "^2.1.0",
     "qrcode": "^1.4.4",
     "request": "^2.88.2",
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dcode-denpa/bitch-boot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dcode-denpa/bitch-boot/issues"
-  },
-  "homepage": "https://github.com/dcode-denpa/bitch-boot#readme"
+  }
 }
