@@ -9,8 +9,6 @@
     "author": "Kaito Saikyo",
     "license": "ISC",
     "dependencies": {
-      "@adiwajshing/baileys": "github:adiwajshing/baileys",
-      "@hapi/boom": "^10.0.0",
-      "node-fetch": "^2.6.1"
-    }
+      "@adiwajshing/baileys": "github:adiwajshing/baileys"
   }
+}
