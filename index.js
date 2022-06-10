@@ -1,25 +1,10 @@
-config here
-        printQRInTerminal: true
+const { WAConnection: _WAConnection, ReconnectMode } = require('@adiwajshing/baileys')
+const WAConnection = simple.WAConnection(_WAConnection)
+const client = new WhatsAppWeb() 
+    client.connect() 
+    .then (([user, chats, contacts, unread]) => {
+        console.log ("oh hello " + user.name + " (" + user.id + ")")
+        console.log ("you have " + unread.length + " unread messages")
+        console.log ("you have " + chats.length + " chats")
     })
-    sock.ev.on('connection.update', (update) => {
-        const { connection, lastDisconnect } = update
-        if(connection === 'close') {
-            const shouldReconnect = (lastDisconnect.error as Boom)?.output?.statusCode !== DisconnectReason.loggedOut
-            console.log('connection closed due to ', lastDisconnect.error, ', reconnecting ', shouldReconnect)
-            // reconnect if not logged out
-            if(shouldReconnect) {
-                connectToWhatsApp()
-            }
-        } else if(connection === 'open') {
-            console.log('opened connection')
-        }
-    })
-    sock.ev.on('messages.upsert', m => {
-        console.log(JSON.stringify(m, undefined, 2))
-
-        console.log('replying to', m.messages[0].key.remoteJid)
-        await sock.sendMessage(m.messages[0].key.remoteJid!, { text: 'Hello there!' })
-    })
-}
-// run in main file
-connectToWhatsApp()
+    .catch (err => console.log("unexpected error: " + err) )
